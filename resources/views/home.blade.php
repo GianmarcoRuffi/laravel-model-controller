@@ -1,23 +1,28 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <title>Laravel Model Controller</title>
+</head>
+<body>
+    <div class="container">
+  
+        <ul>
+        @foreach ($movies as $movie)
+                <li><strong>Title:</strong> {{$movie->title}} </li>
+                <li><strong>Link:</strong> <a href="route('detail',$movie->id">{{$movie->title}}</a></li>
+                <li><strong>Titolo originale:</strong> {{$movie->original_title}}</li>
+                <li><strong>Nazionalità:</strong> {{$movie->nationality}}</li>
+                <li><strong>Uscito il:</strong> {{$movie->date}}</li>
+                <li><strong>Voto:</strong> {{$movie->vote}}</li>
+                @endforeach
+        </ul>
+    
+    
     </div>
-</div>
-@endsection
+
+</body>
+</html>
